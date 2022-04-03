@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 
+	"github.com/davideginna/bombardier-go/controller"
+	"github.com/davideginna/bombardier-go/utility"
 	"github.com/gorilla/mux"
 )
 
@@ -15,13 +17,13 @@ func init() {
 }
 
 func main() {
+	log.Println("Starting ", appName)
 
 	var commonController = controller.CommonControllerFactory()
 
 	r := mux.NewRouter()
 	r.Use(utility.LoggingMiddleware)
 	//Scommentare solo se si vuole utilizzare i controlli jwt
-	r.Use(authentication.JwtAuthMiddleware)
-	r.HandleFunc(config.GetInstance().JWTContextPath+"/swagger", commonController.SwaggerConfig).Methods("GET")
+	r.HandleFunc("/bombardier", commonController.Hello).Methods("GET")
 
 }
