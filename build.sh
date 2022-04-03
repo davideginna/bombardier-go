@@ -1,0 +1,1 @@
+go build -o bombardier-go cmd/main.go 

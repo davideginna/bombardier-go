@@ -1,0 +1,42 @@
+#Configurazione porta server
+serverPort=":9091"
+#Implementazione idempotenza
+idempotent=false
+
+
+# database mongo
+[database]
+mongouri="mongodb://app:app@127.0.0.1:27017/app"
+name="app"
+
+[context]
+publicContextPath="/cochise-public/contextPath"
+appContextPath="/cochise/contextPath"
+jwtContextPath="/cochise-jwt/contextPath"
+
+### Kafka configuration ###
+#[kafka]
+#brokers = "10.1.3.109:9092,10.1.3.109:9093"
+#topics = "TOPIC_TEST"
+#group = "richiesta-ferie-ms"
+#socketTimeout = "2000"
+#verbose = true
+#disabledSend = false
+
+### Authentication
+[authorization]
+securityHeader = "X_USER"
+##Utilizzate per il reload della configurazione
+securityKey = "X_KEY"
+securityValue = "5tG51at11Y2T7"
+
+
+##Zipkin
+[zipkin]
+server="http://10.1.3.106:9411/api/v2/spans"
+appName="template-project-ms"
+
+[certificates]
+jwtPublicKey="""-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsk3Ejfs1dCwcfrEt59iRnV9xdIipp4KwvjvBzmUwFXZQRN1k0sNuyeKNDx0e/w8kJxeizdunNVqJWEu0KI5E9Kr27ZXQnvDbz7dfVjOMH18bMvrmg/8vr5WiY6LHr2ObRagwRsADxeyTad4iMSyluKt4T2TaXuq777wHowjK8fbqRQMSV7picQ29+kgk49HM/pELs9cSa3wxu5aF0nfyIoT5A2HRWv2Z3tpPKQDAQVtp3wqUYk0WSY0H4cFe/rokqZ5yQmFB597YD4hOOyQ6jcEEAol77L1/CV8l7v0oih7CT/EK01S3lZXabGBwGjGni3Ip7R/rmY/SHbaiZ/qn9QIDAQAB
+-----END PUBLIC KEY-----"""
